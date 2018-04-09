@@ -1,0 +1,23 @@
+﻿@model BusBoard.Web.Models.PostcodeSelection
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>BusBoard</h1>
+    <p class="lead">For all your bus info needs. Enter a postcode below and click enter to see bus times for that location.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("BusInfo", "Home", FormMethod.Get))
+        {
+        <fieldset>
+            <legend>Post Code:</legend>
+            @Html.TextBoxFor(m => m.Postcode)
+
+            <input type="submit" value="Get Bus Info" />
+        </fieldset>
+        }
+    </div>
+</div>

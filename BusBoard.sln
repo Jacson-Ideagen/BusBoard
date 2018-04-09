@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusBoard.ConsoleApp", "BusBoard.ConsoleApp\BusBoard.ConsoleApp.csproj", "{446A6CF9-D6EC-49A6-8AD1-F52E1DDA4230}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusBoard.Api", "BusBoard.Api\BusBoard.Api.csproj", "{904861A6-1FE9-42C1-B7B3-9FA42BAB5DF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusBoard.Web", "BusBoard.Web\BusBoard.Web.csproj", "{E393DBB4-F3EF-4683-B737-0165AD5853A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{446A6CF9-D6EC-49A6-8AD1-F52E1DDA4230}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{446A6CF9-D6EC-49A6-8AD1-F52E1DDA4230}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{446A6CF9-D6EC-49A6-8AD1-F52E1DDA4230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{904861A6-1FE9-42C1-B7B3-9FA42BAB5DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{904861A6-1FE9-42C1-B7B3-9FA42BAB5DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{904861A6-1FE9-42C1-B7B3-9FA42BAB5DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{904861A6-1FE9-42C1-B7B3-9FA42BAB5DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E393DBB4-F3EF-4683-B737-0165AD5853A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E393DBB4-F3EF-4683-B737-0165AD5853A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E393DBB4-F3EF-4683-B737-0165AD5853A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E393DBB4-F3EF-4683-B737-0165AD5853A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

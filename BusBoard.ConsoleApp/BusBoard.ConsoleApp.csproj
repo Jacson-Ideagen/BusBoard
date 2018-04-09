@@ -50,10 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusStop.cs" />
+    <Compile Include="Bus.cs" />
     <Compile Include="GetData.cs" />
+    <Compile Include="LatLong.cs" />
+    <Compile Include="PostCodeIO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stop.cs" />
+    <Compile Include="StopList.cs" />
     <Compile Include="TflApi.cs" />
   </ItemGroup>
   <ItemGroup>

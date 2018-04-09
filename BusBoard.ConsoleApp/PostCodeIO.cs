@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusBoard.ConsoleApp
 {
-    public class TflApi
+    public class PostCodeIO
     {
-        const string BaseUrl = "http://api.tfl.gov.uk/";
+        const string BaseUrl = "http://api.postcodes.io/";
         public T Execute<T>(RestRequest request) where T : new()
         {
             var client = new RestClient

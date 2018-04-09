@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
-    public class PostCodeIO
+    public class TflApi
     {
-        const string BaseUrl = "http://api.postcodes.io/";
+        const string BaseUrl = "http://api.tfl.gov.uk/";
         public T Execute<T>(RestRequest request) where T : new()
         {
             var client = new RestClient

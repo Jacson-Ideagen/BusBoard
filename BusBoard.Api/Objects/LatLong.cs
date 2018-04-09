@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api.Objects
 {
-    class LatLong
+   public class LatLong
     {
         public Result result
         { get; set; }
     }
-    class Result
+   public class Result
     {
         public double longitude
         { get; set; }

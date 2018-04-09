@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace BusBoard.ConsoleApp
+using BusBoard.Api.Methods;
+namespace BusBoard.Api.Objects
 {
-    class Stop
+   public class Stop
     {
+        DataMapper dataMapper = new DataMapper();
+        
         public string commonName
         { get; set; }
         public double distance
@@ -36,8 +38,12 @@ namespace BusBoard.ConsoleApp
         { get; set; }
         public List<LineGroup> lineGroup
         { get; set; }
+        public List<Bus> buses
+        {
+            get { return (dataMapper.GetStop(lineGroup.ElementAt(0).naptanIdReference)); }
+        }
     }
-    class Line
+    public class Line
     {
         public string id
         { get; set; }
@@ -47,13 +53,13 @@ namespace BusBoard.ConsoleApp
         { get; set; }
     }
 
-    class LineGroup
+    public class LineGroup
     {
         public string naptanIdReference
         { get; set; }
     }
 
-    class AdditionalProperty
+    public class AdditionalProperty
     {
         public string catagory
         { get; set; }

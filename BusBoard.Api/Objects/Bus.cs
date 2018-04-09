@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api.Objects
 {
-    class Bus
+    public class Bus
     {
         public string bearing
         {

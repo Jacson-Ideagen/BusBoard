@@ -50,13 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Objects\Bus.cs" />
-    <Compile Include="Methods\GetData.cs" />
-    <Compile Include="Objects\LatLong.cs" />
+    <Compile Include="Methods\PrintBus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Objects\Stop.cs" />
-    <Compile Include="Objects\StopList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

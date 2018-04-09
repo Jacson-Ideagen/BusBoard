@@ -4,13 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using BusBoard.ConsoleApp.Methods;
+using BusBoard.Api.Methods;
+using BusBoard.Api.Objects;
 
 namespace BusBoard.ConsoleApp
 {
     class MainBusBoard
     {
-        public GetData GD = new GetData();
+        public DataMapper dataMapper = new DataMapper();
+        public PrintBus busPrinter = new PrintBus();
+
         public bool x = true;
+
         static void Main(string[] args)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -46,19 +52,24 @@ namespace BusBoard.ConsoleApp
                 int count;
                 int radius;
 
+                var stopList = new List<Stop>();
+
                 switch (values.Length)
                 {
                     case 3:
                         count = Convert.ToInt32(values[2].Remove(values[1].Length - 1));
-                        GD.GetClosestStopList(postcode);
+                        stopList =  dataMapper.GetClosestStopList(postcode, count);
+                        busPrinter.StopListPrint(stopList, count);
                         break;
                     case 4:
                         count = Convert.ToInt32(values[2].Remove(values[1].Length - 1));
                         radius = Convert.ToInt32(values[3].Remove(values[3].Length - 1));
-                        GD.GetClosestStopList(postcode);
+                        stopList = dataMapper.GetClosestStopList(postcode, count, radius);
+                        busPrinter.StopListPrint(stopList, count);
                         break;
                     default:
-                        GD.GetClosestStopList(postcode);
+                        stopList = dataMapper.GetClosestStopList(postcode);
+                        busPrinter.StopListPrint(stopList);
                         break;
                 }
             }
@@ -67,6 +78,9 @@ namespace BusBoard.ConsoleApp
             {
                 x = false;
             }
+            Console.WriteLine("");
+            Console.WriteLine("Press any key to return to main menu..");
+            Console.ReadLine();
 
         }
     }

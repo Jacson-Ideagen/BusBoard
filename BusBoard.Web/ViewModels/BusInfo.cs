@@ -15,7 +15,7 @@ namespace BusBoard.Web.ViewModels
             if (error == "")
             {
                 PostCode = postCode;
-                stopList = dataMapper.GetClosestStopList(postCode);
+                stopList = dataMapper.GetClosestStopList(postCode, 10);
             }
             else
             {

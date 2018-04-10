@@ -56,7 +56,7 @@ namespace BusBoard.Api.Objects
 
             set;
         }
-        public string LineName
+        public string lineName
         {
             get;
 

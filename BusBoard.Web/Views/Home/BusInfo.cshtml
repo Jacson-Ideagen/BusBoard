@@ -4,8 +4,6 @@
 }
 @using BusBoard.Api.Objects;
 <meta http-equiv="refresh" content="30">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div class="container">
 
     <h2>BusInfo</h2>
@@ -15,24 +13,25 @@
 
 
     <div class="panel-group" id="accordion">
-
+        @{int i = 0;}
         @foreach(Stop stop in @Model.stopList){
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#@(stop.lineGroup.ElementAt(0).naptanIdReference))">Bus stop <span>@stop.commonName</span> which is <span>@Math.Round(stop.distance).ToString()</span> meters away.</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#@(stop.lineGroup.ElementAt(0).naptanIdReference)">Bus stop <span>@stop.commonName</span> which is <span>@Math.Round(stop.distance).ToString()</span> meters away.</a>
                 </h4>
             </div>
-            <div id="@stop.lineGroup.ElementAt(0).naptanIdReference)" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    @foreach(Bus bus in stop.buses){
-                    <div class="bus text-center">
-                        <p>The bus <span>@bus.VehicleId</span> will be arriving in <span>@bus.expectedArrival.ToLocalTime().Subtract(DateTime.Now).ToString(@"mm")</span> minutes.</p>
+                <div id="@stop.lineGroup.ElementAt(0).naptanIdReference" class="panel-collapse collapse @(i == 0 ? "in" : "")">
+                    @{i = 1;}
+                    <div class="panel-body">
+                        @foreach(Bus bus in stop.buses){
+                        <div class="bus text-center">
+                            <p>The bus <span>@bus.VehicleId</span> going towards <span>@bus.destinationName</span> on line <span>@bus.lineName</span> will be arriving in <span>@bus.expectedArrival.ToLocalTime().Subtract(DateTime.Now).ToString(@"mm")</span> minutes.</p>
+                        </div>
+                        }
                     </div>
-                    }
                 </div>
             </div>
+            }
         </div>
-        }
     </div>
-</div>

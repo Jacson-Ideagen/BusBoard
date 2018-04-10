@@ -10,14 +10,26 @@
 
 <div class="row">
     <div class="col-md-12">
-        @using (Html.BeginForm("BusInfo", "Home", FormMethod.Get))
+        @using (Html.BeginForm("BusInfo", "Home", FormMethod.Get, new { @name = "poster" } ))
         {
         <fieldset>
             <legend>Post Code:</legend>
-            @Html.TextBoxFor(m => m.Postcode)
+            @Html.TextBoxFor(m => m.Postcode, new { @class = "postBox", @placeholder = "Postcode", @autofocus = "autofocus" })
 
-            <input type="submit" value="Get Bus Info" />
+            <input name="SubmitButton" type="submit" value="Get Bus Info" />
         </fieldset>
         }
     </div>
 </div>
+
+<script>   
+    function keypressHandler(e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            $(this).blur();
+            $('#SubmitButton').focus().click();
+        }
+    }
+
+    $('#poster').keypress(keypressHandler);
+</script>

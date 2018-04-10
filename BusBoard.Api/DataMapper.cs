@@ -35,7 +35,7 @@ namespace BusBoard.Api.Methods
 
             return buses;
         }
-        public List<Stop> GetClosestStopList(string postcode, int count = 2, int radius = 200)
+        public List<Stop> GetClosestStopList(string postcode, int count = 2, int radius = 1000)
         {
 
             var latLong = new LatLong();

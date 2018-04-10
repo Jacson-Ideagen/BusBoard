@@ -4,29 +4,35 @@
 }
 @using BusBoard.Api.Objects;
 <meta http-equiv="refresh" content="30">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <div class="container">
 
     <h2>BusInfo</h2>
 
-        <h4>  You entered postcode @Model.PostCode</h4>
-        <br />
+    <h4>  You entered postcode @Model.PostCode</h4>
+    <br />
 
 
-    </div>
+    <div class="panel-group" id="accordion">
 
-    @foreach(Stop stop in @Model.stopList){
-    <div class="busStop jumbotron text-center">
-        <p>For bus stop <span>@stop.commonName</span> which is <span>@Math.Round(stop.distance).ToString()</span> meters away.</p>
-        <hr />
-
-        @foreach(Bus bus in stop.buses){
-        <div class="bus text-center">
-            <p>The bus <span>@bus.VehicleId</span> will be arriving in <span>@bus.expectedArrival.ToLocalTime().Subtract(DateTime.Now).ToString(@"mm")</span> minutes.</p>
+        @foreach(Stop stop in @Model.stopList){
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#@(stop.lineGroup.ElementAt(0).naptanIdReference))">Bus stop <span>@stop.commonName</span> which is <span>@Math.Round(stop.distance).ToString()</span> meters away.</a>
+                </h4>
+            </div>
+            <div id="@stop.lineGroup.ElementAt(0).naptanIdReference)" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    @foreach(Bus bus in stop.buses){
+                    <div class="bus text-center">
+                        <p>The bus <span>@bus.VehicleId</span> will be arriving in <span>@bus.expectedArrival.ToLocalTime().Subtract(DateTime.Now).ToString(@"mm")</span> minutes.</p>
+                    </div>
+                    }
+                </div>
+            </div>
         </div>
         }
-
     </div>
-    <hr />
-    <br />
-    }
 </div>

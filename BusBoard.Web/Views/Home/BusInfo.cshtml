@@ -13,25 +13,59 @@
 
 
     <div class="panel-group" id="accordion">
-        @{int i = 0;}
         @foreach(Stop stop in @Model.stopList){
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#@(stop.lineGroup.ElementAt(0).naptanIdReference)">Bus stop <span>@stop.commonName</span> which is <span>@Math.Round(stop.distance).ToString()</span> meters away.</a>
+                    <a data-toggle="collapse" class="acc" id="A@(stop.lineGroup.ElementAt(0).naptanIdReference)" data-parent="#accordion" href="#@(stop.lineGroup.ElementAt(0).naptanIdReference)">Bus stop <span>@stop.commonName</span> which is <span>@Math.Round(stop.distance).ToString()</span> meters away.</a>
                 </h4>
             </div>
-                <div id="@stop.lineGroup.ElementAt(0).naptanIdReference" class="panel-collapse collapse @(i == 0 ? "in" : "")">
-                    @{i = 1;}
-                    <div class="panel-body">
-                        @foreach(Bus bus in stop.buses){
-                        <div class="bus text-center">
-                            <p>The bus <span>@bus.VehicleId</span> going towards <span>@bus.destinationName</span> on line <span>@bus.lineName</span> will be arriving in <span>@bus.expectedArrival.ToLocalTime().Subtract(DateTime.Now).ToString(@"mm")</span> minutes.</p>
-                        </div>
-                        }
+            <div id="@stop.lineGroup.ElementAt(0).naptanIdReference" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @foreach(Bus bus in stop.buses){
+                    <div class="bus text-center">
+                        <p>The bus <span>@bus.VehicleId</span> going towards <span>@bus.destinationName</span> on line <span>@bus.lineName</span> will be arriving in <span>@bus.expectedArrival.ToLocalTime().Subtract(DateTime.Now).ToString(@"mm")</span> minutes.</p>
                     </div>
+                    }
                 </div>
             </div>
-            }
         </div>
+        }
     </div>
+</div>
+
+<script type="text/javascript">
+
+    function setCookie(key, value) {
+        var expires = new Date();
+        expires.setTime(expires.getTime() + (1 * 24 * 60 * 60 * 1000));
+        document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+    };
+
+    function getCookie(key) {
+        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+        return keyValue ? keyValue[2] : null;
+    };
+
+    $(document).ready(function () {
+
+        $(".acc").click(function () {
+            var id = this.id
+            id = id.substring(1);
+            setCookie("accordian", id);
+        });
+
+        var accordian = getCookie("accordian");
+
+        if (accordian != null) {
+            if ($("#" + accordian).length != 0) {
+                $("#" + accordian).addClass("in");
+            } else {
+                $(".panel-collapse").first().addClass("in");
+            }
+        }
+        else {
+            $(".panel-collapse").first().addClass("in");
+        }
+    });
+</script>

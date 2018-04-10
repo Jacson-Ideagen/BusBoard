@@ -25,7 +25,7 @@ namespace BusBoard.Api.Methods
             foreach (Bus bus in response)
             {
                 _buses.Add(bus);
-                if (i > count - 1) { break; }
+                if (i == count - 1) { break; }
                 i++;
             }
 
@@ -53,7 +53,7 @@ namespace BusBoard.Api.Methods
                 foreach (Stop stop in response.stopPoints)
                 {
                     stopList.Add(stop);
-                    if(i> count - 1) { break; }
+                    if(i == count - 1) { break; }
                     i++;
                 }
             }

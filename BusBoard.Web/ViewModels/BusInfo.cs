@@ -10,14 +10,22 @@ namespace BusBoard.Web.ViewModels
     {
         DataMapper dataMapper = new DataMapper();
 
-        public BusInfo(string postCode)
+        public BusInfo(string postCode, string error = "")
         {
-            PostCode = postCode;
-            stopList = dataMapper.GetClosestStopList(postCode);
-            
+            if (error == "")
+            {
+                PostCode = postCode;
+                stopList = dataMapper.GetClosestStopList(postCode);
+            }
+            else
+            {
+                Error = error;
+            }
         }
 
         public string PostCode { get; set; }
         public List<Stop> stopList { get; set; }
+
+        public string Error { get; set; }
     }
 }

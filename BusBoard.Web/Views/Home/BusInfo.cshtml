@@ -4,27 +4,29 @@
 }
 @using BusBoard.Api.Objects;
 <meta http-equiv="refresh" content="30">
-<h2>BusInfo</h2>
+<div class="container">
 
-<div class="row">
-    <h4>You entered postcode @Model.PostCode</h4>
-    <br />
+    <h2>BusInfo</h2>
+
+        <h4>  You entered postcode @Model.PostCode</h4>
+        <br />
 
 
-</div>
-
-@foreach(Stop stop in @Model.stopList){
-<div class="busStop">
-    <p>For bus stop <span>@stop.commonName</span> which is <span>@Math.Round(stop.distance).ToString()</span> meters away.</p>
-    <hr />
-
-    @foreach(Bus bus in stop.buses){
-    <div class="bus">
-        <p>The bus will be arriving in <span>@bus.expectedArrival.ToLocalTime().Subtract(DateTime.Now).ToString(@"mm")</span> minutes.</p>
     </div>
-    }
 
+    @foreach(Stop stop in @Model.stopList){
+    <div class="busStop jumbotron text-center">
+        <p>For bus stop <span>@stop.commonName</span> which is <span>@Math.Round(stop.distance).ToString()</span> meters away.</p>
+        <hr />
+
+        @foreach(Bus bus in stop.buses){
+        <div class="bus text-center">
+            <p>The bus <span>@bus.VehicleId</span> will be arriving in <span>@bus.expectedArrival.ToLocalTime().Subtract(DateTime.Now).ToString(@"mm")</span> minutes.</p>
+        </div>
+        }
+
+    </div>
+    <hr />
+    <br />
+    }
 </div>
-<hr />
-<br />
-}

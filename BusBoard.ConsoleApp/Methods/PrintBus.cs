@@ -36,7 +36,7 @@ namespace BusBoard.ConsoleApp.Methods
                 StopsPrint(GD.GetStop(stop.lineGroup.ElementAt(0).naptanIdReference));
                 Console.WriteLine("==========================================================================================");
                 Console.WriteLine("");
-                if (i > count - 1)
+                if (i == count - 1)
                 {
                     break;
                 }
